@@ -7,16 +7,26 @@ if (!isset($_SESSION['access_token'])) {
     header('Location: ./');
     exit;
 }
-// Your access token
-$access_token = $_SESSION['access_token'];
-$client->setAccessToken($access_token);
+
+// Set up Google API client
+$client = new Google_Client();
+$client->setAccessToken($_SESSION['access_token']);
 
 // Check if the access token is still valid or needs refreshing
 if ($client->isAccessTokenExpired()) {
-    // Refresh the access token
-    $client->fetchAccessTokenWithRefreshToken($client->getRefreshToken());
-    $_SESSION['access_token'] = $client->getAccessToken();
+     // Check if a refresh token is available
+     if (isset($_SESSION['access_token'])) {
+        // Refresh the access token
+        $client->fetchAccessTokenWithRefreshToken($_SESSION['access_token']);
+        $_SESSION['access_token'] = $client->getAccessToken();
+        $client->setAccessToken($_SESSION['access_token']);
+} else {
+        // If the refresh token is not available, redirect to the login page
+        header('Location: ./');
+        exit;
+    }
 }
+
 
 // Create a Google_Service_Oauth2 object to interact with the userinfo endpoint
 $oauth2 = new Google_Service_Oauth2($client);
@@ -26,7 +36,8 @@ try {
 } catch (Exception $e) {
     // Handle any errors that might occur
     // You can log or display the error message if needed
-    header('Location: error.php');
+    echo $e->getMessage();
+    // header('Location: error.php');
     exit;
 }
 ?>
