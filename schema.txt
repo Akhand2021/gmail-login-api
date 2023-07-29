@@ -1,0 +1,13 @@
+create database mydb;
+
+CREATE TABLE `google_credentials` (
+  `id` INT(11) NOT NULL AUTO_INCREMENT,
+  `credentials` JSON NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB;
+
+Insert your google credentials into table & fetch it.
+
+use this command in root directory 
+
+composer require google/apiclient
