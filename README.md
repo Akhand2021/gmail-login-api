@@ -1,4 +1,3 @@
-# gmail-login-api
 # Gmail Login API Integration in PHP
 
 This repository contains a web application that demonstrates how to integrate Gmail login using the Google API Client Library in PHP. Users can log in using their Google account and access Gmail data after granting the necessary permissions.
