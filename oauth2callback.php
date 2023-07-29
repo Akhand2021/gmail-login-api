@@ -35,17 +35,3 @@ if (!isset($_SESSION['access_token'])) {
     exit;
 }
 
-// If the access token is already available (user is logged in), set it in the client
-if (isset($_SESSION['access_token'])) {
-    $client->setAccessToken($_SESSION['access_token']);
-    // Check if the access token is still valid or needs refreshing
-    if ($client->isAccessTokenExpired()) {
-        // Refresh the access token
-        $client->fetchAccessTokenWithRefreshToken($client->getRefreshToken());
-        $_SESSION['access_token'] = $client->getAccessToken();
-    }
-}
-
-// Redirect to the main application after successful authentication
-header('Location: dashboard.php');
-exit;
