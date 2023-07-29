@@ -36,8 +36,8 @@ try {
 } catch (Exception $e) {
     // Handle any errors that might occur
     // You can log or display the error message if needed
-    echo $e->getMessage();
-    // header('Location: error.php');
+    // echo $e->getMessage();
+    header('Location: error.php');
     exit;
 }
 ?>
