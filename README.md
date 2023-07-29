@@ -1,3 +1,4 @@
 # gmail-login-api
-![image](https://github.com/Akhand2021/gmail-login-api/assets/104663417/c596f9b6-2864-45fb-a009-748b0d358f8c)
+![image](https://github.com/Akhand2021/gmail-login-api/assets/104663417/0a646aff-5356-48ef-a28f-6f9f3cb19f7c)
+
 
